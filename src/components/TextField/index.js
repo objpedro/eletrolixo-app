@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import { styles } from "./styles";
-import { Eye, EyeOff } from 'react-native-feather';
+import { Eye, EyeOff, Lock, Mail } from 'react-native-feather';
 import colors from '../../utils/colors';
 
 export function TextField({ onChange, value, placeholder, isPassword }) {
@@ -37,7 +37,13 @@ export function TextField({ onChange, value, placeholder, isPassword }) {
         <View style={styles.container}>
             {
                 isPassword ?
-                    <View style={styles.passwordFieldContainer}>
+                    <View style={styles.inputFieldContainer}>
+                        <Lock
+                            style={styles.iconField}
+                            width={15}
+                            height={15}
+                            color={colors.primario}
+                        />
                         <TextInput
                             style={styles.passwordField}
                             placeholderTextColor={colors.primario}
@@ -54,15 +60,23 @@ export function TextField({ onChange, value, placeholder, isPassword }) {
                         </TouchableOpacity>
                     </View>
                     :
-                    <TextInput
-                        style={styles.inputContainer}
-                        cursorColor={colors.primario}
-                        placeholderTextColor={colors.primario}
-                        onChangeText={onChange}
-                        value={value}
-                        placeholder={placeholder}
-                        secureTextEntry={false}
-                    />
+                    <View style={styles.inputFieldContainer}>
+                        <Mail
+                            style={styles.iconField}
+                            width={15}
+                            height={15}
+                            color={colors.primario}
+                        />
+                        <TextInput
+                            style={styles.inputContainer}
+                            cursorColor={colors.primario}
+                            placeholderTextColor={colors.primario}
+                            onChangeText={onChange}
+                            value={value}
+                            placeholder={placeholder}
+                            secureTextEntry={false}
+                        />
+                    </View>
             }
         </View>
     )

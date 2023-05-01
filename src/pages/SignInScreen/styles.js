@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     txtBtnLogin: {
-        color: colors.whiteBlue,
+        color: colors.secundario,
         fontSize: RFValue(15),
     },
     cadastreseContainer: {

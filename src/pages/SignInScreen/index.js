@@ -34,23 +34,28 @@ export function SignInScreen() {
                     placeholder={'Email'}
                     isPassword={false}
                 />
+
                 <TextField
                     onChange={setSenha}
                     value={senha}
                     placeholder={'Senha'}
                     isPassword={true}
                 />
-                <TouchableOpacity style={styles.btnEsqueceuSenha}>
+
+                <TouchableOpacity style={styles.btnEsqueceuSenha}
+                    onPress={() => { console.log('Esqueci a senha') }}>
                     <Text style={styles.textEsqueceuSenha}>Esqueceu sua senha?</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btnLogin}>
+                <TouchableOpacity style={styles.btnLogin}
+                    onPress={() => { console.log('Login') }} >
                     <Text style={styles.txtBtnLogin}>Login</Text>
                 </TouchableOpacity>
 
                 <View style={styles.cadastreseContainer}>
                     <Text>É seu primeiro acesso? </Text>
-                    <TouchableOpacity style={styles.btnCadastrese}>
+                    <TouchableOpacity style={styles.btnCadastrese}
+                        onPress={() => { console.log('Cadastre-se') }}>
                         <Text style={styles.textEsqueceuSenha}>Cadastre-se aqui.</Text>
                     </TouchableOpacity>
                 </View>

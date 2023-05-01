@@ -8,26 +8,28 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    iconField: {
+        marginRight: 20,
+    },
     inputContainer: {
-        width: '100%',
+        width: '75%',
         borderRadius: 10,
-        color: colors.preto,
-        paddingHorizontal: 20,
+        color: colors.primario,
         backgroundColor: colors.whiteBlue,
-        marginTop: 10,
         paddingVertical: 10,
     },
-    passwordFieldContainer: {
+    inputFieldContainer: {
         flexDirection: 'row',
+        alignItems: 'center',
         width: '100%',
         borderRadius: 10,
-        marginTop: 10,
-        paddingLeft: 20,
+        marginTop: 20,
+        paddingHorizontal: 20,
         backgroundColor: colors.whiteBlue,
     },
     passwordField: {
-        width: '80%',
-        color: colors.preto,
+        width: '75%',
+        color: colors.primario,
         paddingVertical: 10,
     },
     btnEye: {
