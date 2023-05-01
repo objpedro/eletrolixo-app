@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         fontSize: RFValue(40),
         fontWeight: 'bold',
     },
-    txtCadastrar:{
+    txtCadastrar: {
         marginBottom: 20,
     },
     cadastrar: {
@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
         color: colors.secundario,
         fontSize: RFValue(15),
     },
+    iconField: {
+        marginRight: 20,
+    }
 })
 
 export { styles }

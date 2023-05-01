@@ -3,7 +3,8 @@ import { View, Text, TouchableOpacity, } from 'react-native';
 import { styles } from './styles';
 import { HeaderEcopointer } from '../../components/HeaderEcopointer';
 import { TextField } from "../../components/TextField";
-
+import { User, Mail } from 'react-native-feather';
+import colors from '../../utils/colors';
 
 export function SignUpScreen() {
 
@@ -19,12 +20,26 @@ export function SignUpScreen() {
                 <Text style={styles.txtRegistro}>Registro</Text>
                 <Text style={styles.txtCadastrar}>Cadastre uma nova conta</Text>
                 <TextField
+                    icon={
+                        <User
+                            style={styles.iconField}
+                            width={15}
+                            height={15}
+                            color={colors.primario} />
+                    }
                     onChange={setNome}
                     value={nome}
                     placeholder={'Nome completo'}
                     isPassword={false}
                 />
                 <TextField
+                    icon={
+                        <Mail
+                            style={styles.iconField}
+                            width={15}
+                            height={15}
+                            color={colors.primario} />
+                    }
                     onChange={setEmail}
                     value={email}
                     placeholder={'Email'}
@@ -32,16 +47,30 @@ export function SignUpScreen() {
                 />
 
                 <TextField
+                    icon={
+                        <Mail
+                            style={styles.iconField}
+                            width={15}
+                            height={15}
+                            color={colors.primario} />
+                    }
                     onChange={setsenha}
                     value={senha}
                     placeholder={'Senha'}
-                    isPassword={false}
+                    isPassword={true}
                 />
                 <TextField
+                    icon={
+                        <Mail
+                            style={styles.iconField}
+                            width={15}
+                            height={15}
+                            color={colors.primario} />
+                    }
                     onChange={setConfirmarSenha}
                     value={confirmarSenha}
                     placeholder={'Confirme sua senha'}
-                    isPassword={false}
+                    isPassword={true}
                 />
 
                 <TouchableOpacity style={styles.cadastrar}

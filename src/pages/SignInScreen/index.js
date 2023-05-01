@@ -7,7 +7,9 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { TextField } from "../../components/TextField";
+import { Mail } from 'react-native-feather';
 import { styles } from "./styles";
+import colors from "../../utils/colors";
 
 export function SignInScreen() {
     const [email, setEmail] = useState('');
@@ -29,6 +31,11 @@ export function SignInScreen() {
 
             <View style={styles.inputsContainer}>
                 <TextField
+                    icon={<Mail
+                        style={styles.iconField}
+                        width={15}
+                        height={15}
+                        color={colors.primario} />}
                     onChange={setEmail}
                     value={email}
                     placeholder={'Email'}

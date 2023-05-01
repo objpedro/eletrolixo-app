@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
     btnCadastrese: {
         color: colors.primario,
     },
+    iconField: {
+        marginRight: 20,
+    },
 })
 
 export { styles }
