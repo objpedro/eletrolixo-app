@@ -5,14 +5,53 @@ import { RFValue } from 'react-native-responsive-fontsize'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 30,
+    },
+    imageStyle: {
+        resizeMode: 'cover',
+        opacity: 0.6,
+        height: '100%',
+        width: '100%',
+    },
+    imageBackground: {
+        height: '50%',
+        justifyContent: 'space-around',
         alignItems: 'center',
+    },
+    imageLogo: {
+        marginTop: 50,
+        resizeMode: 'cover',
+        width: 150,
+        height: 150,
+    },
+    header: {
+        width: '100%',
+        alignItems: 'center',
+    },
+    textWelcome: {
+        fontSize: RFValue(30),
+        fontWeight: 'bold',
+        color: colors.primario,
+    },
+    textLogin: {
+        color: colors.preto,
+    },
+    inputsContainer: {
+        paddingHorizontal: 30,
+        alignItems: 'flex-end',
+    },
+    btnEsqueceuSenha: {
+        marginTop: 10,
+    },
+    textEsqueceuSenha: {
+        fontWeight: 'bold',
+        color: colors.primario,
     },
     btnLogin: {
         width: '100%',
-        marginTop: 20,
+        marginTop: 100,
+        marginBottom: 10,
         backgroundColor: colors.primario,
-        borderRadius: 10,
+        borderRadius: 100,
         padding: '4%',
         alignItems: 'center',
         justifyContent: 'center',
@@ -21,12 +60,14 @@ const styles = StyleSheet.create({
         color: colors.whiteBlue,
         fontSize: RFValue(15),
     },
-    forgotPasswordContainer: {
-        marginTop: 10,
-    },
-    forgotPassword: {
+    cadastreseContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
         width: '100%',
-        alignItems: 'flex-end',
+    },
+    btnCadastrese: {
+        color: colors.primario,
     },
 })
 
