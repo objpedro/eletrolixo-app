@@ -5,9 +5,9 @@ import { HeaderEcopointer } from '../../components/HeaderEcopointer';
 import { TextField } from "../../components/TextField";
 
 
-export function SignUpScreen() {
+export function RecoverPasswordScreen() {
 
-    const [nome, setNome] = useState('');
+    const [token, setToken] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setsenha] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
@@ -16,20 +16,21 @@ export function SignUpScreen() {
         <>
             <HeaderEcopointer />
             <View style={styles.container}>
-                <Text style={styles.txtRegistro}>Registro</Text>
-                <Text style={styles.txtCadastrar}>Cadastre uma nova conta</Text>
+                <Text style={styles.txtRecuperar}>Recuperar Senha</Text>
+                <Text style={styles.txtCadastrar}>Cadastre uma nova senha</Text>
                 <TextField
-                    onChange={setNome}
-                    value={nome}
-                    placeholder={'Nome completo'}
+                    onChange={setToken}
+                    value={token}
+                    placeholder={'Token'}
                     isPassword={false}
-                    isUser={(true)}
+                    isToken={true}
                 />
                 <TextField
                     onChange={setEmail}
                     value={email}
                     placeholder={'Email'}
                     isPassword={false}
+                    isToken={false}
                 />
 
                 <TextField
@@ -37,17 +38,19 @@ export function SignUpScreen() {
                     value={senha}
                     placeholder={'Senha'}
                     isPassword={true}
+                    isToken={false}
                 />
                 <TextField
                     onChange={setConfirmarSenha}
                     value={confirmarSenha}
                     placeholder={'Confirme sua senha'}
                     isPassword={true}
+                    isToken={false}
                 />
 
-                <TouchableOpacity style={styles.cadastrar}
-                    onPress={() => { console.log('Cadastro') }} >
-                    <Text style={styles.txtBtnCadastrar}>Inscreva-se</Text>
+                <TouchableOpacity style={styles.recuperar}
+                    onPress={() => { console.log('Recuperar Senha') }} >
+                    <Text style={styles.txtBtnRecuperar}>Recuperar</Text>
                 </TouchableOpacity>
             </View>
         </>
