@@ -59,7 +59,7 @@ export function SignInScreen() {
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.btnLogin}
-                        onPress={() => { console.log('Login') }} >
+                        onPress={() => { navigation.navigate('Home'); }}>
                         <Text style={styles.txtBtnLogin}>Login</Text>
                     </TouchableOpacity>
 

@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SignInScreen } from '../pages/SignInScreen';
 import { SignUpScreen } from '../pages/SignUpScreen';
 import { RecoverPasswordScreen } from '../pages/RecoverPasswordScreen';
+import { HomeScreen } from '../pages/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,14 @@ export function Routes() {
                 component={SignUpScreen}
                 options={{
                     title: 'Registro',
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{
+                    title: 'Home',
                     headerShown: false,
                 }}
             />
