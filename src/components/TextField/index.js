@@ -16,7 +16,7 @@ export function TextField({ icon, onChange, value, placeholder, isPassword }) {
     let getEyePasssword = () => {
         if (passwordField) {
             return (
-                <Eye
+                <EyeOff
                     width={20}
                     height={20}
                     color={colors.primario}
@@ -24,7 +24,7 @@ export function TextField({ icon, onChange, value, placeholder, isPassword }) {
             );
         } else {
             return (
-                <EyeOff
+                <Eye
                     width={20}
                     height={20}
                     color={colors.primario}

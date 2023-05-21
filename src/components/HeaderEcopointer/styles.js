@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: colors.primario,
         paddingVertical: 20,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: 5,
     },
     eco: {
         color: colors.secundario,

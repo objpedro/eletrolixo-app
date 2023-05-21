@@ -8,7 +8,11 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: 30,
+    },
+    contentContainer: {
+
+        justifyContent: 'center',
+        padding: 30,
     },
     txtRegistro: {
         color: colors.primario,
