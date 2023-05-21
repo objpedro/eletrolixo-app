@@ -5,6 +5,10 @@ import { RFValue } from 'react-native-responsive-fontsize'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: colors.secundario,
+    },
+    contentContainer: {
+        height: '100%',
     },
     imageStyle: {
         resizeMode: 'cover',
