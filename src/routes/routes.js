@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //Telas
 import { SignInScreen } from '../pages/SignInScreen';
 import { SignUpScreen } from '../pages/SignUpScreen';
+import { RecoverPasswordScreen } from '../pages/RecoverPasswordScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +24,14 @@ export function Routes() {
                 component={SignUpScreen}
                 options={{
                     title: 'Registro',
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="RecoverPassword"
+                component={RecoverPasswordScreen}
+                options={{
+                    title: 'Recuperar Senha',
                     headerShown: false,
                 }}
             />

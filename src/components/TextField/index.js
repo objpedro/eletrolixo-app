@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import { styles } from "./styles";
-import { Eye, EyeOff, Lock, Mail } from 'react-native-feather';
+import { Eye, EyeOff, Lock } from 'react-native-feather';
 import colors from '../../utils/colors';
 
 export function TextField({ icon, onChange, value, placeholder, isPassword }) {

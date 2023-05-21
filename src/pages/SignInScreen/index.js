@@ -54,7 +54,7 @@ export function SignInScreen() {
                     />
 
                     <TouchableOpacity style={styles.btnEsqueceuSenha}
-                        onPress={() => { console.log('Esqueci a senha') }}>
+                        onPress={() => { navigation.navigate('RecoverPassword'); }}>
                         <Text style={styles.textEsqueceuSenha}>Esqueceu sua senha?</Text>
                     </TouchableOpacity>
 

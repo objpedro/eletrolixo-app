@@ -8,8 +8,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: colors.primario,
         paddingVertical: 20,
-        justifyContent: 'center',
+        alignItems: 'center',
         marginBottom: 5,
+    },
+    txtBanner: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'center'
     },
     eco: {
         color: colors.secundario,
@@ -20,6 +25,10 @@ const styles = StyleSheet.create({
         color: colors.secundario,
         fontSize: RFValue(20),
         fontWeight: '300',
+    },
+    btnGoBack: {
+        position: 'absolute',
+        marginLeft: 20,
     }
 })
 
