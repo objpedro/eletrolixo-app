@@ -10,18 +10,19 @@ export function HeaderEcopointer() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.txtBanner}>
+            <View style={styles.txtBannerContainer}>
                 <Text style={styles.eco}>Eco</Text>
                 <Text style={styles.pointer}>Pointer</Text>
             </View>
 
-            <TouchableOpacity style={styles.btnGoBack} onPress={() => { navigation.goBack() }}>
-                <ArrowLeft
-                    width={30}
-                    height={30}
-                    color={colors.secundario}
-                />
-            </TouchableOpacity>
+            <View style={styles.btnGoBack}>
+                <TouchableOpacity onPress={() => { navigation.goBack() }}>
+                    <ArrowLeft
+                        width={30}
+                        height={30}
+                        color={colors.secundario} />
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }

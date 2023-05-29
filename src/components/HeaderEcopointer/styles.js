@@ -4,6 +4,7 @@ import { RFValue } from 'react-native-responsive-fontsize'
 
 const styles = StyleSheet.create({
     container: {
+        paddingTop: 40,
         width: '100%',
         flexDirection: 'row',
         backgroundColor: colors.primario,
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 5,
     },
-    txtBanner: {
+    txtBannerContainer: {
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'center'
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
     btnGoBack: {
         position: 'absolute',
         marginLeft: 20,
+        paddingTop: 20,
     }
 })
 
