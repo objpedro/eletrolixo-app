@@ -7,25 +7,22 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.secundario,
     },
-    contentContainer: {
-        height: '100%',
-    },
     imageStyle: {
         resizeMode: 'cover',
         opacity: 0.6,
-        height: '100%',
+        height: RFValue(400),
         width: '100%',
     },
     imageBackground: {
-        height: '50%',
+        height: '100%',
         justifyContent: 'space-around',
         alignItems: 'center',
     },
     imageLogo: {
         marginTop: 50,
         resizeMode: 'cover',
-        width: 150,
-        height: 150,
+        width: RFValue(150),
+        height: RFValue(150),
     },
     header: {
         width: '100%',
@@ -40,6 +37,9 @@ const styles = StyleSheet.create({
         color: colors.preto,
     },
     inputsContainer: {
+        backgroundColor: 'rgba(0, 0, 0, 0.0)',
+        height: '50%',
+        width: '100%',
         paddingHorizontal: 30,
         alignItems: 'flex-end',
     },
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
         color: colors.primario,
     },
     btnLogin: {
+        justifyContent: 'center',
         width: '100%',
         marginTop: 100,
         marginBottom: 10,
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     cadastreseContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         width: '100%',
     },
     btnCadastrese: {

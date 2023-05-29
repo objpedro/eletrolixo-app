@@ -5,7 +5,7 @@ import {
     Image,
     ImageBackground,
     TouchableOpacity,
-    ScrollView
+    ScrollView,
 } from 'react-native';
 import { TextField } from "../../components/TextField";
 import { Mail } from 'react-native-feather';
@@ -20,18 +20,16 @@ export function SignInScreen() {
 
     return (
         <View style={styles.container}>
-            <ScrollView contentContainerStyle={styles.contentContainer}>
-                <ImageBackground
-                    source={require('../../../assets/banner_inicio.png')}
-                    imageStyle={styles.imageStyle}
-                    style={styles.imageBackground}>
-                    <Image style={styles.imageLogo}
-                        source={require('../../../assets/ecopoint_logo.png')} />
-                    <View style={styles.header}>
-                        <Text style={styles.textWelcome}>Seja bem vindo</Text>
-                        <Text style={styles.textLogin}>Faça login na sua conta</Text>
-                    </View>
-                </ImageBackground>
+            <ImageBackground
+                source={require('../../../assets/banner_inicio.png')}
+                imageStyle={styles.imageStyle}
+                style={styles.imageBackground}>
+                <Image style={styles.imageLogo}
+                    source={require('../../../assets/ecopoint_logo.png')} />
+                <View style={styles.header}>
+                    <Text style={styles.textWelcome}>Seja bem vindo</Text>
+                    <Text style={styles.textLogin}>Faça login na sua conta</Text>
+                </View>
 
                 <View style={styles.inputsContainer}>
                     <TextField
@@ -71,7 +69,7 @@ export function SignInScreen() {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </ScrollView>
+            </ImageBackground>
         </View>
     )
 }

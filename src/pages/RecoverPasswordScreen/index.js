@@ -42,8 +42,7 @@ export function RecoverPasswordScreen() {
                         }
                         onChange={setSenhaAntiga}
                         value={senhaAntiga}
-                        placeholder={'Senha Antiga'}
-                        isPassword={true}
+                        placeholder={'Email'}
                     />
                     <TextField
                         icon={
