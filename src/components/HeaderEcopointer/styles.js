@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primario,
         paddingVertical: 20,
         alignItems: 'center',
-        marginBottom: 5,
     },
     txtBannerContainer: {
         width: '100%',

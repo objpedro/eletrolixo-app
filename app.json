@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "eletrolixo-app",
-    "slug": "eletrolixo-app",
+    "name": "Ecopointer",
+    "slug": "Ecopointer",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/ecopoint_logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/splashEcopointer.jpg",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [

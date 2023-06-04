@@ -9,6 +9,7 @@ import { styles } from './styles';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { Search } from 'react-native-feather';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { googlePlacesAutocompleteConfig } from '../../../googlePlacesAutocompleteConfig';
 import colors from '../../utils/colors';
 
 export function HomeScreen() {
@@ -45,14 +46,7 @@ export function HomeScreen() {
                     showsUserLocation={true}
                     loadingEnabled={true}
                 />
-                <View style={{
-                    position: 'absolute',
-                    marginTop: RFValue(10),
-                    marginLeft: RFValue(10),
-                    width: '80%',
-                    flexDirection: 'row',
-                    justifyContent: 'flex-end',
-                }}>
+                <View style={styles.autoCompleteContainer}>
                     <GooglePlacesAutocomplete
                         placeholder='Encontre Ecopoints'
                         onPress={(data, details = null) => {
@@ -67,29 +61,14 @@ export function HomeScreen() {
                                 longitudeDelta: 0.0421,
                             });
                         }}
-                        query={{
-                            key: 'AIzaSyD_dcMTz21vH7x0ylilwPxPzXZmVBVjsIA',
-                            language: 'pt-br',
-                        }}
+                        query={googlePlacesAutocompleteConfig}
                         enablePoweredByContainer={false}
                         fetchDetails={true}
-                        styles={{
-                            textInput: {
-                                borderWidth: 3,
-                                borderColor: colors.primario,
-                                borderRadius: 10,
-                            },
-                            listView: { height: 100 }
-                        }}
+                        styles={styles.autoComplete}
                     />
-                    <View style={{
-                        position: 'absolute',
-                    }}>
+                    <View style={styles.autoCompleteIconContainer}>
                         <Search
-                            style={{
-                                marginRight: RFValue(20),
-                                marginTop: RFValue(12),
-                            }}
+                            style={styles.autoCompleteIcon}
                             width={20}
                             height={20}
                             color={colors.primario} />

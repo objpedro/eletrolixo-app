@@ -47,7 +47,7 @@ export function SignInScreen() {
 
     return (
         <View style={styles.container}>
-            <ScrollView>
+            <ScrollView >
                 <ImageBackground
                     source={require('../../../assets/banner_inicio.png')}
                     imageStyle={styles.imageStyle}
