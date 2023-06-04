@@ -3,7 +3,7 @@ import { ScrollView, View, Text, TouchableOpacity, } from 'react-native';
 import { styles } from './styles';
 import { HeaderEcopointer } from '../../components/HeaderEcopointer';
 import { TextField } from "../../components/TextField";
-import { Key, Code } from 'react-native-feather';
+import { Key, Code, Mail } from 'react-native-feather';
 import colors from '../../utils/colors';
 
 export function RecoverPasswordScreen() {
@@ -34,7 +34,7 @@ export function RecoverPasswordScreen() {
                     />
                     <TextField
                         icon={
-                            <Code
+                            <Mail
                                 style={styles.iconField}
                                 width={15}
                                 height={15}

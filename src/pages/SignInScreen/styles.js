@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
         height: RFValue(150),
     },
     header: {
+        marginTop: 50,
         width: '100%',
         alignItems: 'center',
     },
@@ -38,7 +39,6 @@ const styles = StyleSheet.create({
     },
     inputsContainer: {
         backgroundColor: 'rgba(0, 0, 0, 0.0)',
-        height: '50%',
         width: '100%',
         paddingHorizontal: 30,
         alignItems: 'flex-end',
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
+        paddingBottom: 20,
     },
     btnCadastrese: {
         color: colors.primario,
