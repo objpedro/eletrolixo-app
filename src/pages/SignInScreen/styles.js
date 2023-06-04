@@ -4,9 +4,9 @@ import { RFValue } from 'react-native-responsive-fontsize'
 
 const styles = StyleSheet.create({
     container: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        flex: 1,
         backgroundColor: colors.secundario,
+        justifyContent: 'center',
     },
     imageStyle: {
         resizeMode: 'cover',
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     imageLogo: {
-        marginTop: 50,
+        marginTop: RFValue(100),
         resizeMode: 'cover',
         width: RFValue(150),
         height: RFValue(150),
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     btnLogin: {
         justifyContent: 'center',
         width: '100%',
-        marginTop: 100,
+        marginTop: 70,
         marginBottom: 10,
         backgroundColor: colors.primario,
         borderRadius: 100,
