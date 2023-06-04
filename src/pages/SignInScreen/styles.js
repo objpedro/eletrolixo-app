@@ -1,10 +1,11 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import colors from "../../utils/colors";
 import { RFValue } from 'react-native-responsive-fontsize'
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
         backgroundColor: colors.secundario,
     },
     imageStyle: {

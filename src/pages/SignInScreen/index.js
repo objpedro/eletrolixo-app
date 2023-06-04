@@ -2,21 +2,48 @@ import React, { useState } from "react";
 import {
     View,
     Text,
+    Alert,
     Image,
+    ScrollView,
     ImageBackground,
     TouchableOpacity,
-    ScrollView,
 } from 'react-native';
 import { TextField } from "../../components/TextField";
 import { Mail } from 'react-native-feather';
 import { styles } from "./styles";
 import colors from "../../utils/colors";
 import { useNavigation } from "@react-navigation/core";
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "../../../firebaseConfig";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export function SignInScreen() {
+    const app = initializeApp(firebaseConfig);
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const navigation = useNavigation();
+    const auth = getAuth(app);
+
+    async function handleSignin() {
+        await signInWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log("user: ", user);
+                navigation.navigate('Home');
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                Alert.alert('Não foi possível fazer o login', errorMessage, [
+                    {
+                        text: 'Cancelar',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+                    { text: 'OK', onPress: () => console.log('OK Pressed') },
+                ])
+            });
+    }
 
     return (
         <View style={styles.container}>
@@ -58,7 +85,10 @@ export function SignInScreen() {
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.btnLogin}
-                            onPress={() => { navigation.navigate('Home'); }}>
+                            onPress={() => {
+                                // handleSignin();
+                                navigation.navigate('Home');
+                            }}>
                             <Text style={styles.txtBtnLogin}>Login</Text>
                         </TouchableOpacity>
 
