@@ -7,11 +7,13 @@ import {
     Platform,
     PermissionsAndroid,
 } from 'react-native';
-import Device from 'expo-device';
 import * as Location from 'expo-location';
 import { HeaderEcopointer } from '../../components/HeaderEcopointer'
 import { styles } from './styles';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { Search } from 'react-native-feather';
+import { RFValue } from 'react-native-responsive-fontsize';
+import colors from '../../utils/colors';
 
 export function HomeScreen() {
     const [location, setLocation] = useState(null);
@@ -41,31 +43,6 @@ export function HomeScreen() {
     return (
         <View style={styles.container}>
             <HeaderEcopointer />
-            <Text>{text}</Text>
-            <GooglePlacesAutocomplete
-                placeholder='Encontre Ecopoints'
-                onPress={(data, details = null) => {
-                    // 'details' is provided when fetchDetails = true
-                    // console.log(data, details);
-                    console.log('LAT selected: ', details.geometry.location.lat);
-                    console.log('LOG selected: ', details.geometry.location.lng);
-                    setLocation({
-                        latitude: details.geometry.location.lat,
-                        longitude: details.geometry.location.lng,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
-                    });
-                }}
-                query={{
-                    key: 'AIzaSyD_dcMTz21vH7x0ylilwPxPzXZmVBVjsIA',
-                    language: 'pt-br',
-                }}
-                enablePoweredByContainer={false}
-                fetchDetails={true}
-                styles={{
-                    listView: { height: 100 }
-                }}
-            />
             <MapView
                 style={styles.map}
                 region={location}
@@ -73,6 +50,43 @@ export function HomeScreen() {
                 showsUserLocation={true}
                 loadingEnabled={true}
             />
+
+            <View style={{
+                position: 'absolute',
+                marginTop: RFValue(96),
+                marginLeft: RFValue(10),
+                width: '80%',
+                flexDirection: 'row',
+            }}>
+                <GooglePlacesAutocomplete
+                    placeholder='Encontre Ecopoints'
+                    onPress={(data, details = null) => {
+                        // 'details' is provided when fetchDetails = true
+                        // console.log(data, details);
+                        console.log('LAT selected: ', details.geometry.location.lat);
+                        console.log('LOG selected: ', details.geometry.location.lng);
+                        setLocation({
+                            latitude: details.geometry.location.lat,
+                            longitude: details.geometry.location.lng,
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421,
+                        });
+                    }}
+                    query={{
+                        key: 'AIzaSyD_dcMTz21vH7x0ylilwPxPzXZmVBVjsIA',
+                        language: 'pt-br',
+                    }}
+                    enablePoweredByContainer={false}
+                    fetchDetails={true}
+                    styles={{
+                        listView: { height: 100 }
+                    }}
+                />
+                <Search
+                    width={15}
+                    height={15}
+                    color={colors.primario} />
+            </View>
         </View>
     );
 }
