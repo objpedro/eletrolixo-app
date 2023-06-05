@@ -28,7 +28,6 @@ export function SignInScreen() {
         await signInWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log("user: ", user);
                 navigation.navigate('HomeScreen');
             })
             .catch((error) => {

@@ -1,16 +1,40 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Text, TouchableOpacity, } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, Alert } from 'react-native';
 import { styles } from './styles';
 import { HeaderEcopointer } from '../../components/HeaderEcopointer';
 import { TextField } from "../../components/TextField";
-import { Key, Code, Mail } from 'react-native-feather';
+import { Mail } from 'react-native-feather';
+import { useNavigation } from "@react-navigation/core";
 import colors from '../../utils/colors';
 
+//Firebase
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "../../../firebaseConfig";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+
 export function RecoverPasswordScreen() {
-    const [token, setToken] = useState('');
-    const [senhaAntiga, setSenhaAntiga] = useState('');
-    const [senha, setSenha] = useState('');
-    const [confirmarSenha, setConfirmarSenha] = useState('');
+    const navigation = useNavigation();
+    const [email, setEmail] = useState('');
+
+    //Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const user = auth.currentUser;
+
+    async function handleResetPassword() {
+        await
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    Alert.alert('Um email de verificação foi encaminhado para: ', email, [
+                        { text: 'OK', onPress: () => console.log('OK Pressed') },
+                    ])
+                    navigation.navigate('SignIn');
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                });
+    }
 
     return (
         <View style={styles.container} >
@@ -19,19 +43,7 @@ export function RecoverPasswordScreen() {
                 <View style={styles.containerLogin}>
                     <Text style={styles.txtRegistro}>Recuperar Senha</Text>
                     <Text style={styles.txtCadastrar}>Cadastre uma nova senha</Text>
-                    <TextField
-                        icon={
-                            <Key
-                                style={styles.iconField}
-                                width={15}
-                                height={15}
-                                color={colors.primario} />
-                        }
-                        onChange={setToken}
-                        value={token}
-                        placeholder={'Token'}
-                        isPassword={false}
-                    />
+
                     <TextField
                         icon={
                             <Mail
@@ -40,39 +52,15 @@ export function RecoverPasswordScreen() {
                                 height={15}
                                 color={colors.primario} />
                         }
-                        onChange={setSenhaAntiga}
-                        value={senhaAntiga}
-                        placeholder={'Email'}
-                    />
-                    <TextField
-                        icon={
-                            <Code
-                                style={styles.iconField}
-                                width={15}
-                                height={15}
-                                color={colors.primario} />
-                        }
-                        onChange={setSenha}
-                        value={senha}
-                        placeholder={'Senha'}
-                        isPassword={true}
-                    />
-                    <TextField
-                        icon={
-                            <Code
-                                style={styles.iconField}
-                                width={15}
-                                height={15}
-                                color={colors.primario} />
-                        }
-                        onChange={setConfirmarSenha}
-                        value={confirmarSenha}
-                        placeholder={'Confirme sua senha'}
-                        isPassword={true}
+                        onChange={setEmail}
+                        value={email}
+                        placeholder={'Email de recuperação'}
                     />
                     <TouchableOpacity style={styles.cadastrar}
-                        onPress={() => { console.log('Cadastro') }} >
-                        <Text style={styles.txtBtnCadastrar}>Inscreva-se</Text>
+                        onPress={() => {
+                            handleResetPassword();
+                        }} >
+                        <Text style={styles.txtBtnCadastrar}>Continuar</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>

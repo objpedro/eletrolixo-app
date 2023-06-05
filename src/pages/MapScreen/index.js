@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import MapView from 'react-native-maps';
 import {
     View,
@@ -9,14 +9,24 @@ import { styles } from './styles';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { Search } from 'react-native-feather';
 import { googlePlacesAutocompleteConfig } from '../../../googlePlacesAutocompleteConfig';
+import MapViewDirections from 'react-native-maps-directions';
 import colors from '../../utils/colors';
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
-import { firebaseConfig } from '../../../firebaseConfig';
 
 export function MapScreen() {
     const [location, setLocation] = useState(null);
+    const mapEl = useRef(null);
+    const [origin, setOrigin] = useState(null);
+    const [destination, setDestination] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+
+    // const origin = {
+    //     latitude: 37.3318456,
+    //     longitude: -122.0296002
+    // };
+    // const destination = {
+    //     latitude: 37.771707,
+    //     longitude: -122.4053769
+    // };
 
     useEffect(() => {
         (async () => {
@@ -27,6 +37,12 @@ export function MapScreen() {
             }
             let location = await Location.getCurrentPositionAsync({});
             setLocation(location);
+            setOrigin({
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+                latitudeDelta: 0.000922,
+                longitudeDelta: 0.000421
+            })
         })();
     }, []);
 
@@ -47,7 +63,29 @@ export function MapScreen() {
                     zoomEnabled={true}
                     showsUserLocation={true}
                     loadingEnabled={true}
-                />
+                    ref={mapEl}>
+                    {
+                        destination &&
+                        <MapViewDirections
+                            origin={origin}
+                            destination={destination}
+                            apikey={'AIzaSyD_dcMTz21vH7x0ylilwPxPzXZmVBVjsIA'}
+                            strokeWidth={3}
+                            onReady={result => {
+                                mapEl.current.fitToCoordinates(
+                                    result.coordinates, {
+                                    edgePadding: {
+                                        top: 50,
+                                        bottom: 50,
+                                        left: 50,
+                                        right: 50,
+                                    }
+                                }
+                                )
+                            }}
+                        />
+                    }
+                </MapView>
                 <View style={styles.autoCompleteContainer}>
                     <GooglePlacesAutocomplete
                         placeholder='Encontre Ecopoints'
@@ -56,12 +94,13 @@ export function MapScreen() {
                             // console.log(data, details);
                             console.log('LAT selected: ', details.geometry.location.lat);
                             console.log('LOG selected: ', details.geometry.location.lng);
-                            setLocation({
+                            setDestination({
                                 latitude: details.geometry.location.lat,
                                 longitude: details.geometry.location.lng,
                                 latitudeDelta: 0.0922,
                                 longitudeDelta: 0.0421,
                             });
+                            console.log(destination)
                         }}
                         query={googlePlacesAutocompleteConfig}
                         enablePoweredByContainer={false}

@@ -24,7 +24,6 @@ export function SignUpScreen() {
         await createUserWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log("user: ", user);
                 updateProfile(auth.currentUser, {
                     displayName: nome,
                     photoURL: "https://matcointernacional.com/wp-content/uploads/2017/10/user_default.png"
