@@ -5,6 +5,10 @@ import { HeaderEcopointer } from '../../components/HeaderEcopointer';
 import { TextField } from "../../components/TextField";
 import { User, Mail } from 'react-native-feather';
 import colors from '../../utils/colors';
+//Firebase
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "../../../firebaseConfig";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 export function SignUpScreen() {
 
@@ -12,6 +16,30 @@ export function SignUpScreen() {
     const [email, setEmail] = useState('');
     const [senha, setsenha] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
+    //Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    async function handleSignUp() {
+        await createUserWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log("user: ", user);
+                updateProfile(auth.currentUser, {
+                    displayName: nome,
+                    photoURL: "https://matcointernacional.com/wp-content/uploads/2017/10/user_default.png"
+                }).then(() => {
+                    console.log("Olá: ", user.displayName);
+                }).catch((error) => {
+                    console.log("Erro: ", error)
+                });
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log("Erro: ", error.code, " - ", error.message);
+            });
+    }
 
     return (
         <View style={styles.container} >
@@ -73,7 +101,10 @@ export function SignUpScreen() {
                         isPassword={true}
                     />
                     <TouchableOpacity style={styles.cadastrar}
-                        onPress={() => { console.log('Cadastro') }} >
+                        onPress={() => {
+                            console.log('Cadastro')
+                            handleSignUp();
+                        }} >
                         <Text style={styles.txtBtnCadastrar}>Inscreva-se</Text>
                     </TouchableOpacity>
                 </View>
