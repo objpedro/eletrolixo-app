@@ -8,9 +8,11 @@ import { HeaderEcopointer } from '../../components/HeaderEcopointer'
 import { styles } from './styles';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { Search } from 'react-native-feather';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { googlePlacesAutocompleteConfig } from '../../../googlePlacesAutocompleteConfig';
 import colors from '../../utils/colors';
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+import { firebaseConfig } from '../../../firebaseConfig';
 
 export function HomeScreen() {
     const [location, setLocation] = useState(null);

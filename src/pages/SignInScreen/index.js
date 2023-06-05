@@ -19,8 +19,8 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export function SignInScreen() {
     const app = initializeApp(firebaseConfig);
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const [email, setEmail] = useState('pedro@pedro.com');
+    const [senha, setSenha] = useState('123456789');
     const navigation = useNavigation();
     const auth = getAuth(app);
 
@@ -87,8 +87,8 @@ export function SignInScreen() {
 
                         <TouchableOpacity style={styles.btnLogin}
                             onPress={() => {
-                                // handleSignin();
-                                navigation.navigate('Home');
+                                handleSignin();
+                                // navigation.navigate('Home');
                             }}>
                             <Text style={styles.txtBtnLogin}>Login</Text>
                         </TouchableOpacity>
