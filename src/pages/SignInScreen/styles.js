@@ -1,29 +1,32 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import colors from "../../utils/colors";
 import { RFValue } from 'react-native-responsive-fontsize'
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: colors.secundario,
+        justifyContent: 'center',
     },
     imageStyle: {
         resizeMode: 'cover',
         opacity: 0.6,
-        height: '100%',
+        height: RFValue(400),
         width: '100%',
     },
     imageBackground: {
-        height: '50%',
+        height: '100%',
         justifyContent: 'space-around',
         alignItems: 'center',
     },
     imageLogo: {
-        marginTop: 50,
+        marginTop: RFValue(100),
         resizeMode: 'cover',
-        width: 150,
-        height: 150,
+        width: RFValue(150),
+        height: RFValue(150),
     },
     header: {
+        marginTop: 50,
         width: '100%',
         alignItems: 'center',
     },
@@ -36,6 +39,8 @@ const styles = StyleSheet.create({
         color: colors.preto,
     },
     inputsContainer: {
+        backgroundColor: 'rgba(0, 0, 0, 0.0)',
+        width: '100%',
         paddingHorizontal: 30,
         alignItems: 'flex-end',
     },
@@ -47,8 +52,9 @@ const styles = StyleSheet.create({
         color: colors.primario,
     },
     btnLogin: {
+        justifyContent: 'center',
         width: '100%',
-        marginTop: 100,
+        marginTop: 70,
         marginBottom: 10,
         backgroundColor: colors.primario,
         borderRadius: 100,
@@ -63,11 +69,15 @@ const styles = StyleSheet.create({
     cadastreseContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         width: '100%',
+        paddingBottom: 20,
     },
     btnCadastrese: {
         color: colors.primario,
+    },
+    iconField: {
+        marginRight: 20,
     },
 })
 

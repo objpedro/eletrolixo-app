@@ -6,17 +6,17 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import { styles } from "./styles";
-import { Eye, EyeOff, Lock, Mail } from 'react-native-feather';
+import { Eye, EyeOff, Lock } from 'react-native-feather';
 import colors from '../../utils/colors';
 
-export function TextField({ onChange, value, placeholder, isPassword }) {
+export function TextField({ icon, onChange, value, placeholder, isPassword }) {
 
     const [passwordField, setPasswordField] = useState(true)
 
     let getEyePasssword = () => {
         if (passwordField) {
             return (
-                <Eye
+                <EyeOff
                     width={20}
                     height={20}
                     color={colors.primario}
@@ -24,7 +24,7 @@ export function TextField({ onChange, value, placeholder, isPassword }) {
             );
         } else {
             return (
-                <EyeOff
+                <Eye
                     width={20}
                     height={20}
                     color={colors.primario}
@@ -61,12 +61,7 @@ export function TextField({ onChange, value, placeholder, isPassword }) {
                     </View>
                     :
                     <View style={styles.inputFieldContainer}>
-                        <Mail
-                            style={styles.iconField}
-                            width={15}
-                            height={15}
-                            color={colors.primario}
-                        />
+                        {icon}
                         <TextInput
                             style={styles.inputContainer}
                             cursorColor={colors.primario}
