@@ -6,10 +6,10 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import { styles } from "./styles";
-import { Eye, EyeOff, Lock, Mail, Shield, User, Flag, MapPin, Sun, Moon } from 'react-native-feather';
+import { Eye, EyeOff, Lock, Mail } from 'react-native-feather';
 import colors from '../../utils/colors';
 
-export function TextField({ onChange, value, placeholder, isPassword, isToken, isUser, isPoint, isNome, isEndereco, isAbre }) {
+export function TextField({ onChange, value, placeholder, isPassword }) {
 
     const [passwordField, setPasswordField] = useState(true)
 
@@ -36,8 +36,7 @@ export function TextField({ onChange, value, placeholder, isPassword, isToken, i
     return (
         <View style={styles.container}>
             {
-                
-                isPassword && !isToken ?
+                isPassword ?
                     <View style={styles.inputFieldContainer}>
                         <Lock
                             style={styles.iconField}
@@ -59,114 +58,6 @@ export function TextField({ onChange, value, placeholder, isPassword, isToken, i
                             onPress={() => { setPasswordField(!passwordField) }}>
                             {getEyePasssword()}
                         </TouchableOpacity>
-                    </View>
-                    : !isPassword && isToken ?
-                    <View style={styles.inputFieldContainer}>
-                        <Shield
-                            style={styles.iconField}
-                            width={15}
-                            height={15}
-                            color={colors.primario}
-                        />
-                        <TextInput
-                            style={styles.inputContainer}
-                            cursorColor={colors.primario}
-                            placeholderTextColor={colors.primario}
-                            onChangeText={onChange}
-                            value={value}
-                            placeholder={placeholder}
-                            secureTextEntry={false}
-                        />
-                    </View>
-                    : !isPassword && isUser ?
-                    <View style={styles.inputFieldContainer}>
-                        <User
-                            style={styles.iconField}
-                            width={15}
-                            height={15}
-                            color={colors.primario}
-                        />
-                        <TextInput
-                            style={styles.inputContainer}
-                            cursorColor={colors.primario}
-                            placeholderTextColor={colors.primario}
-                            onChangeText={onChange}
-                            value={value}
-                            placeholder={placeholder}
-                            secureTextEntry={false}
-                        />
-                    </View>
-                    : isPoint && isNome && !isAbre && !isEndereco ?
-                    <View style={styles.inputFieldContainer}>
-                        <Flag
-                            style={styles.iconField}
-                            width={15}
-                            height={15}
-                            color={colors.primario}
-                        />
-                        <TextInput
-                            style={styles.inputContainer}
-                            cursorColor={colors.primario}
-                            placeholderTextColor={colors.primario}
-                            onChangeText={onChange}
-                            value={value}
-                            placeholder={placeholder}
-                            secureTextEntry={false}
-                        />
-                    </View>
-                    : isPoint && !isNome && !isAbre && isEndereco ?
-                    <View style={styles.inputFieldContainer}>
-                        <MapPin
-                            style={styles.iconField}
-                            width={15}
-                            height={15}
-                            color={colors.primario}
-                        />
-                        <TextInput
-                            style={styles.inputContainer}
-                            cursorColor={colors.primario}
-                            placeholderTextColor={colors.primario}
-                            onChangeText={onChange}
-                            value={value}
-                            placeholder={placeholder}
-                            secureTextEntry={false}
-                        />
-                    </View>
-                    : isPoint && !isNome && isAbre && !isEndereco ?
-                    <View style={styles.inputFieldContainer}>
-                        <Sun
-                            style={styles.iconField}
-                            width={15}
-                            height={15}
-                            color={colors.primario}
-                        />
-                        <TextInput
-                            style={styles.inputContainer}
-                            cursorColor={colors.primario}
-                            placeholderTextColor={colors.primario}
-                            onChangeText={onChange}
-                            value={value}
-                            placeholder={placeholder}
-                            secureTextEntry={false}
-                        />
-                    </View>
-                    : isPoint && !isNome && !isAbre && !isEndereco ?
-                    <View style={styles.inputFieldContainer}>
-                        <Moon
-                            style={styles.iconField}
-                            width={15}
-                            height={15}
-                            color={colors.primario}
-                        />
-                        <TextInput
-                            style={styles.inputContainer}
-                            cursorColor={colors.primario}
-                            placeholderTextColor={colors.primario}
-                            onChangeText={onChange}
-                            value={value}
-                            placeholder={placeholder}
-                            secureTextEntry={false}
-                        />
                     </View>
                     :
                     <View style={styles.inputFieldContainer}>

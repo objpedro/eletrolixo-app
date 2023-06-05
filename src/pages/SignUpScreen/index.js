@@ -23,7 +23,6 @@ export function SignUpScreen() {
                     value={nome}
                     placeholder={'Nome completo'}
                     isPassword={false}
-                    isUser={(true)}
                 />
                 <TextField
                     onChange={setEmail}
@@ -36,13 +35,13 @@ export function SignUpScreen() {
                     onChange={setsenha}
                     value={senha}
                     placeholder={'Senha'}
-                    isPassword={true}
+                    isPassword={false}
                 />
                 <TextField
                     onChange={setConfirmarSenha}
                     value={confirmarSenha}
                     placeholder={'Confirme sua senha'}
-                    isPassword={true}
+                    isPassword={false}
                 />
 
                 <TouchableOpacity style={styles.cadastrar}
