@@ -29,7 +29,7 @@ export function SignInScreen() {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log("user: ", user);
-                navigation.navigate('Home');
+                navigation.navigate('HomeScreen');
             })
             .catch((error) => {
                 const errorCode = error.code;

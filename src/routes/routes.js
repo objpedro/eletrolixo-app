@@ -4,8 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //Telas
 import { SignInScreen } from '../pages/SignInScreen';
 import { SignUpScreen } from '../pages/SignUpScreen';
-import { RecoverPasswordScreen } from '../pages/RecoverPasswordScreen';
 import { HomeScreen } from '../pages/HomeScreen';
+import { RecoverPasswordScreen } from '../pages/RecoverPasswordScreen';
+import { MapScreen } from '../pages/MapScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,10 +30,18 @@ export function Routes() {
                 }}
             />
             <Stack.Screen
-                name="Home"
+                name="HomeScreen"
                 component={HomeScreen}
                 options={{
-                    title: 'Home',
+                    title: 'Recuperar Senha',
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="Map"
+                component={MapScreen}
+                options={{
+                    title: 'Map',
                     headerShown: false,
                 }}
             />
