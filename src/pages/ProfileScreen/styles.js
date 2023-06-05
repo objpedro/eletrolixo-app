@@ -44,6 +44,12 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  buttonCloseContainer: {
+    position: 'absolute',
+    width: '100%',
+    alignItems: 'flex-end',
+    marginTop: 10
+  },
   buttonModal: {
     borderRadius: 10,
     marginTop: 15,
@@ -59,11 +65,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalText: {
-    marginBottom: 15,
+    fontSize: RFValue(15),
     textAlign: 'center',
   },
   iconField: {
     marginRight: 15,
+  },
+  iconModalClose: {
+    marginVertical: 10,
   },
 })
 

@@ -5,14 +5,12 @@ import {
     Text,
     TouchableOpacity,
     Alert,
-    Button,
     Modal,
     Pressable
 } from 'react-native';
 import { HeaderEcopointer } from '../../components/HeaderEcopointer';
 import { TextField } from "../../components/TextField";
-import { Snackbar } from "@react-native-material/core";
-import { Mail, Lock, LogOut } from 'react-native-feather';
+import { X, Mail, Lock, LogOut } from 'react-native-feather';
 import { useNavigation } from "@react-navigation/core";
 import colors from '../../utils/colors';
 import { styles } from './styles';
@@ -21,11 +19,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 //Firebase
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../../../firebaseConfig";
-import {
-    getAuth,
-    sendEmailVerification,
-    updateEmail,
-} from "firebase/auth";
+import { getAuth, sendEmailVerification, updateEmail, } from "firebase/auth";
 
 export function ProfileScreen() {
     const navigation = useNavigation();
@@ -136,17 +130,20 @@ export function ProfileScreen() {
                         <Modal
                             animationType="slide"
                             transparent={true}
-                            visible={modalVisible}
-                            onRequestClose={() => {
-                                Alert.alert('Modal has been closed.');
-                                setModalVisible(!modalVisible);
-                            }}>
+                            visible={modalVisible}>
                             <View style={styles.centeredView}>
                                 <View style={styles.modalView}>
+                                    <View style={styles.buttonCloseContainer}>
+                                        <Pressable onPress={() => { setModalVisible(!modalVisible) }}>
+                                            <X style={styles.iconModalClose}
+                                                width={15}
+                                                height={15}
+                                                color={colors.primario} />
+                                        </Pressable>
+                                    </View>
                                     <Text style={styles.modalText}>Digite um email válido</Text>
                                     <TextField
-                                        icon={<Mail
-                                            style={styles.iconField}
+                                        icon={<Mail style={styles.iconField}
                                             width={15}
                                             height={15}
                                             color={colors.primario} />}
@@ -169,7 +166,6 @@ export function ProfileScreen() {
                     </View>
                 </View>
             </ScrollView >
-
         </>
     )
 }
