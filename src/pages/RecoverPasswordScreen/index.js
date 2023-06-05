@@ -33,6 +33,14 @@ export function RecoverPasswordScreen() {
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
+                    Alert.alert('Não foi enviar o email de recuperação', errorMessage, [
+                        {
+                            text: 'Cancelar',
+                            onPress: () => console.log('Cancel Pressed'),
+                            style: 'cancel',
+                        },
+                        { text: 'OK', onPress: () => console.log('OK Pressed') },
+                    ])
                 });
     }
 
@@ -59,6 +67,7 @@ export function RecoverPasswordScreen() {
                     <TouchableOpacity style={styles.cadastrar}
                         onPress={() => {
                             handleResetPassword();
+                            navigation.navigate('SignIn');
                         }} >
                         <Text style={styles.txtBtnCadastrar}>Continuar</Text>
                     </TouchableOpacity>

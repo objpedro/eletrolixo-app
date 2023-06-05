@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Text, TouchableOpacity, } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, Alert, } from 'react-native';
 import { styles } from './styles';
 import { HeaderEcopointer } from '../../components/HeaderEcopointer';
 import { TextField } from "../../components/TextField";
 import { User, Mail } from 'react-native-feather';
+import { useNavigation } from "@react-navigation/core";
 import colors from '../../utils/colors';
 //Firebase
 import { initializeApp } from "firebase/app";
@@ -16,9 +17,26 @@ export function SignUpScreen() {
     const [email, setEmail] = useState('');
     const [senha, setsenha] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
+    const navigation = useNavigation();
     //Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+
+    function validadeInput() {
+        if (nome !== '' && email !== '' && senha !== '' && confirmarSenha !== '') {
+            if (senha === confirmarSenha) {
+                handleSignUp();
+            } else {
+                Alert.alert('Senhas estão diferentes', 'Campos senha e confirmação de senha estão diferentes', [
+                    { text: 'OK', onPress: () => console.log('OK Pressed') },
+                ])
+            }
+        } else {
+            Alert.alert('Campos vazios', 'Preencha todo os campos para continuar', [
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ])
+        }
+    }
 
     async function handleSignUp() {
         await createUserWithEmailAndPassword(auth, email, senha)
@@ -32,13 +50,22 @@ export function SignUpScreen() {
                 }).catch((error) => {
                     console.log("Erro: ", error)
                 });
+                navigation.navigate('SignIn')
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log("Erro: ", error.code, " - ", error.message);
+                Alert.alert('Não foi possível cadastrar um usuário', errorMessage, [
+                    {
+                        text: 'Cancelar',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+                    { text: 'OK', onPress: () => console.log('OK Pressed') },
+                ])
             });
     }
+
 
     return (
         <View style={styles.container} >
@@ -101,8 +128,8 @@ export function SignUpScreen() {
                     />
                     <TouchableOpacity style={styles.cadastrar}
                         onPress={() => {
-                            console.log('Cadastro')
-                            handleSignUp();
+                            console.log('Cadastro');
+                            validadeInput();
                         }} >
                         <Text style={styles.txtBtnCadastrar}>Inscreva-se</Text>
                     </TouchableOpacity>

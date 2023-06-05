@@ -28,6 +28,8 @@ export function SignInScreen() {
         await signInWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
                 const user = userCredential.user;
+                setEmail('');
+                setSenha('');
                 navigation.navigate('HomeScreen');
             })
             .catch((error) => {
@@ -87,7 +89,6 @@ export function SignInScreen() {
                         <TouchableOpacity style={styles.btnLogin}
                             onPress={() => {
                                 handleSignin();
-                                // navigation.navigate('Home');
                             }}>
                             <Text style={styles.txtBtnLogin}>Login</Text>
                         </TouchableOpacity>

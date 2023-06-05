@@ -19,15 +19,6 @@ export function MapScreen() {
     const [destination, setDestination] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
 
-    // const origin = {
-    //     latitude: 37.3318456,
-    //     longitude: -122.0296002
-    // };
-    // const destination = {
-    //     latitude: 37.771707,
-    //     longitude: -122.4053769
-    // };
-
     useEffect(() => {
         (async () => {
             let { status } = await Location.requestForegroundPermissionsAsync();
@@ -80,8 +71,7 @@ export function MapScreen() {
                                         left: 50,
                                         right: 50,
                                     }
-                                }
-                                )
+                                })
                             }}
                         />
                     }
@@ -90,17 +80,12 @@ export function MapScreen() {
                     <GooglePlacesAutocomplete
                         placeholder='Encontre Ecopoints'
                         onPress={(data, details = null) => {
-                            // 'details' is provided when fetchDetails = true
-                            // console.log(data, details);
-                            console.log('LAT selected: ', details.geometry.location.lat);
-                            console.log('LOG selected: ', details.geometry.location.lng);
                             setDestination({
                                 latitude: details.geometry.location.lat,
                                 longitude: details.geometry.location.lng,
                                 latitudeDelta: 0.0922,
                                 longitudeDelta: 0.0421,
                             });
-                            console.log(destination)
                         }}
                         query={googlePlacesAutocompleteConfig}
                         enablePoweredByContainer={false}
