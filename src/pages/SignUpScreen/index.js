@@ -128,7 +128,6 @@ export function SignUpScreen() {
                     />
                     <TouchableOpacity style={styles.cadastrar}
                         onPress={() => {
-                            console.log('Cadastro');
                             validadeInput();
                         }} >
                         <Text style={styles.txtBtnCadastrar}>Inscreva-se</Text>

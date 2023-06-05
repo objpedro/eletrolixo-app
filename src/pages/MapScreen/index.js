@@ -60,7 +60,7 @@ export function MapScreen() {
                         <MapViewDirections
                             origin={origin}
                             destination={destination}
-                            apikey={'AIzaSyD_dcMTz21vH7x0ylilwPxPzXZmVBVjsIA'}
+                            apikey={googlePlacesAutocompleteConfig.key}
                             strokeWidth={3}
                             onReady={result => {
                                 mapEl.current.fitToCoordinates(
