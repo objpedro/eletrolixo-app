@@ -43,7 +43,7 @@ function renderIcons(item, focused) {
                 <Text style={{
                     fontSize: RFValue(13),
                     color: focused ? colors.secundario : colors.preto,
-                }}>Configurações</Text>
+                }}>Meu Perfil</Text>
             </>
         default:
             return <>
