@@ -19,8 +19,8 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export function SignInScreen() {
     const app = initializeApp(firebaseConfig);
-    const [email, setEmail] = useState('pedro@pedro.com');
-    const [senha, setSenha] = useState('123456789');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
     const navigation = useNavigation();
     const auth = getAuth(app);
 
