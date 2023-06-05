@@ -79,17 +79,18 @@ export function ProfileScreen() {
             <HeaderEcopointer />
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.container} >
-                    <Text>Nome: {user.displayName}</Text>
-                    <View style={{
-                        flexDirection: 'row',
-                    }}>
-                        <Text>Email: {user.email}</Text>
-                        {user.emailVerified == false &&
-                            < Text style={{
-                                color: colors.error
-                            }}> Email não verificado</Text>
-                        }
-                    </View>
+                    <Text style={{
+                        fontSize: RFValue(20),
+                    }}>Nome: {user.displayName}</Text>
+                    <Text style={{
+                        fontSize: RFValue(20),
+                        marginTop: 10
+                    }}>Email: {user.email}</Text>
+                    {user.emailVerified == false &&
+                        < Text style={{
+                            color: colors.error
+                        }}>Email não verificado</Text>
+                    }
 
                     <TouchableOpacity
                         style={styles.button}
