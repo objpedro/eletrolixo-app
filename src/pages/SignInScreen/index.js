@@ -19,7 +19,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export function SignInScreen() {
     const app = initializeApp(firebaseConfig);
-    const [email, setEmail] = useState('pedro@pedro.com');
+    const [email, setEmail] = useState('pedromusne.ti@gmail.com');
     const [senha, setSenha] = useState('123456789');
     const navigation = useNavigation();
     const auth = getAuth(app);
@@ -28,7 +28,6 @@ export function SignInScreen() {
         await signInWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log("user: ", user);
                 navigation.navigate('HomeScreen');
             })
             .catch((error) => {

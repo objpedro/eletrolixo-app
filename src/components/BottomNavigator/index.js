@@ -27,7 +27,7 @@ function renderIcons(item, focused) {
                     color: focused ? colors.secundario : colors.preto,
                 }}>Home</Text>
             </>
-        case 'SettingsScreen':
+        case 'ProfileScreen':
             return <>
                 <Image
                     source={item.icone}

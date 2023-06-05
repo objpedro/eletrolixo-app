@@ -10,9 +10,6 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { Search } from 'react-native-feather';
 import { googlePlacesAutocompleteConfig } from '../../../googlePlacesAutocompleteConfig';
 import colors from '../../utils/colors';
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
-import { firebaseConfig } from '../../../firebaseConfig';
 
 export function MapScreen() {
     const [location, setLocation] = useState(null);

@@ -3,9 +3,8 @@ import {
     View
 } from 'react-native';
 import { BottomNavigator } from '../../components/BottomNavigator';
-
 import { MapScreen } from '../MapScreen';
-import { SettingsScreen } from "../SettingsScreen";
+import { ProfileScreen } from "../ProfileScreen";
 
 export function HomeScreen() {
     return (
@@ -14,7 +13,7 @@ export function HomeScreen() {
             <BottomNavigator
                 itens={[
                     { titulo: 'MapScreen', page: MapScreen, icone: require("../../../assets/tabIcons/home.png"), id: "tabFilm" },
-                    { titulo: 'SettingsScreen', page: SettingsScreen, icone: require("../../../assets/tabIcons/profile.png"), id: "tabFilm" },
+                    { titulo: 'ProfileScreen', page: ProfileScreen, icone: require("../../../assets/tabIcons/profile.png"), id: "tabFilm" },
                 ]} />
         </View>
     )
