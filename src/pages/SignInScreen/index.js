@@ -13,16 +13,14 @@ import { Mail } from 'react-native-feather';
 import { styles } from "./styles";
 import colors from "../../utils/colors";
 import { useNavigation } from "@react-navigation/core";
-import { initializeApp } from "firebase/app";
+//Firebase
 import { firebaseConfig } from "../../../firebaseConfig";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import auth from '@react-native-firebase/auth';
 
 export function SignInScreen() {
-    const app = initializeApp(firebaseConfig);
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const navigation = useNavigation();
-    const auth = getAuth(app);
 
     async function handleSignin() {
         await signInWithEmailAndPassword(auth, email, senha)
@@ -88,7 +86,8 @@ export function SignInScreen() {
 
                         <TouchableOpacity style={styles.btnLogin}
                             onPress={() => {
-                                handleSignin();
+                                // handleSignin();
+                                navigation.navigate('HomeScreen');
                             }}>
                             <Text style={styles.txtBtnLogin}>Login</Text>
                         </TouchableOpacity>

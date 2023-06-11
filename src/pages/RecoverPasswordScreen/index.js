@@ -8,18 +8,14 @@ import { useNavigation } from "@react-navigation/core";
 import colors from '../../utils/colors';
 
 //Firebase
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../../../firebaseConfig";
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+
 
 export function RecoverPasswordScreen() {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
 
     //Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const user = auth.currentUser;
+
 
     async function handleResetPassword() {
         await

@@ -7,9 +7,7 @@ import { User, Mail } from 'react-native-feather';
 import { useNavigation } from "@react-navigation/core";
 import colors from '../../utils/colors';
 //Firebase
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../../../firebaseConfig";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+
 
 export function SignUpScreen() {
 
@@ -19,8 +17,7 @@ export function SignUpScreen() {
     const [confirmarSenha, setConfirmarSenha] = useState('');
     const navigation = useNavigation();
     //Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+
 
     function validadeInput() {
         if (nome !== '' && email !== '' && senha !== '' && confirmarSenha !== '') {

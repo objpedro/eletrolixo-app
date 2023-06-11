@@ -1,5 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { Routes } from './src/routes/routes';
+import {enableLatestRenderer} from 'react-native-maps';
+
+enableLatestRenderer();
 
 export default function App() {
   return (

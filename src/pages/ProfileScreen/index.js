@@ -17,18 +17,14 @@ import { styles } from './styles';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 //Firebase
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../../../firebaseConfig";
-import { getAuth, sendEmailVerification, updateEmail, } from "firebase/auth";
+
 
 export function ProfileScreen() {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
     //Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const user = auth.currentUser;
+
 
     //Resetar senha
     async function handleResetPassword() {
