@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "689771239250",
+    "firebase_url": "https://ecopointer-44110-default-rtdb.firebaseio.com",
+    "project_id": "ecopointer-44110",
+    "storage_bucket": "ecopointer-44110.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:689771239250:android:2eab3111bca774d6738c8b",
+        "android_client_info": {
+          "package_name": "com.ecopointer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "689771239250-bodaj2iqphovh4uc1degoo9lqeh95nju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgfrCmjyPFxDedj4elupVyNaDw8CqEKv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "689771239250-bodaj2iqphovh4uc1degoo9lqeh95nju.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
