@@ -7,22 +7,24 @@ import { User, Mail } from 'react-native-feather';
 import { useNavigation } from "@react-navigation/core";
 import colors from '../../utils/colors';
 //Firebase
-
+import { firebaseSignUp } from '../../utils/firebaseMethods';
 
 export function SignUpScreen() {
 
-    const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
-    const [senha, setsenha] = useState('');
-    const [confirmarSenha, setConfirmarSenha] = useState('');
+    const [nome, setNome] = useState('Lengo Tengo');
+    const [email, setEmail] = useState('lengo@.com');
+    const [senha, setsenha] = useState('123456789');
+    const [confirmarSenha, setConfirmarSenha] = useState('123456789');
     const navigation = useNavigation();
     //Firebase
-
 
     function validadeInput() {
         if (nome !== '' && email !== '' && senha !== '' && confirmarSenha !== '') {
             if (senha === confirmarSenha) {
-                handleSignUp();
+                result = firebaseSignUp(nome, email, senha);
+                if (result) {
+                    navigation.navigate('SignIn');
+                }
             } else {
                 Alert.alert('Senhas estão diferentes', 'Campos senha e confirmação de senha estão diferentes', [
                     { text: 'OK', onPress: () => console.log('OK Pressed') },
@@ -35,33 +37,33 @@ export function SignUpScreen() {
         }
     }
 
-    async function handleSignUp() {
-        await createUserWithEmailAndPassword(auth, email, senha)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                updateProfile(auth.currentUser, {
-                    displayName: nome,
-                    photoURL: "https://matcointernacional.com/wp-content/uploads/2017/10/user_default.png"
-                }).then(() => {
-                    console.log("Olá: ", user.displayName);
-                }).catch((error) => {
-                    console.log("Erro: ", error)
-                });
-                navigation.navigate('SignIn')
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                Alert.alert('Não foi possível cadastrar um usuário', errorMessage, [
-                    {
-                        text: 'Cancelar',
-                        onPress: () => console.log('Cancel Pressed'),
-                        style: 'cancel',
-                    },
-                    { text: 'OK', onPress: () => console.log('OK Pressed') },
-                ])
-            });
-    }
+    // async function handleSignUp() {
+    //     await createUserWithEmailAndPassword(auth, email, senha)
+    //         .then((userCredential) => {
+    //             const user = userCredential.user;
+    //             updateProfile(auth.currentUser, {
+    //                 displayName: nome,
+    //                 photoURL: "https://matcointernacional.com/wp-content/uploads/2017/10/user_default.png"
+    //             }).then(() => {
+    //                 console.log("Olá: ", user.displayName);
+    //             }).catch((error) => {
+    //                 console.log("Erro: ", error)
+    //             });
+    //             navigation.navigate('SignIn')
+    //         })
+    //         .catch((error) => {
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             Alert.alert('Não foi possível cadastrar um usuário', errorMessage, [
+    //                 {
+    //                     text: 'Cancelar',
+    //                     onPress: () => console.log('Cancel Pressed'),
+    //                     style: 'cancel',
+    //                 },
+    //                 { text: 'OK', onPress: () => console.log('OK Pressed') },
+    //             ])
+    //         });
+    // }
 
 
     return (

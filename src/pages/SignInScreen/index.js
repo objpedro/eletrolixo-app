@@ -14,34 +14,38 @@ import { styles } from "./styles";
 import colors from "../../utils/colors";
 import { useNavigation } from "@react-navigation/core";
 //Firebase
-import { firebaseConfig } from "../../../firebaseConfig";
-import auth from '@react-native-firebase/auth';
+import { firebaseSignIn } from "../../utils/firebaseMethods";
 
 export function SignInScreen() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const navigation = useNavigation();
 
-    async function handleSignin() {
-        await signInWithEmailAndPassword(auth, email, senha)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                setEmail('');
-                setSenha('');
-                navigation.navigate('HomeScreen');
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                Alert.alert('Não foi possível fazer o login', errorMessage, [
-                    {
-                        text: 'Cancelar',
-                        onPress: () => console.log('Cancel Pressed'),
-                        style: 'cancel',
-                    },
-                    { text: 'OK', onPress: () => console.log('OK Pressed') },
-                ])
-            });
+    function handleSignin() {
+        result = firebaseSignIn(email, senha);
+        if (result) {
+            navigation.navigate('HomeScreen');
+        }
+
+        // await signInWithEmailAndPassword(auth, email, senha)
+        //     .then((userCredential) => {
+        //         const user = userCredential.user;
+        //         setEmail('');
+        //         setSenha('');
+        //         navigation.navigate('HomeScreen');
+        //     })
+        //     .catch((error) => {
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         Alert.alert('Não foi possível fazer o login', errorMessage, [
+        //             {
+        //                 text: 'Cancelar',
+        //                 onPress: () => console.log('Cancel Pressed'),
+        //                 style: 'cancel',
+        //             },
+        //             { text: 'OK', onPress: () => console.log('OK Pressed') },
+        //         ])
+        //     });
     }
 
     return (
@@ -86,8 +90,8 @@ export function SignInScreen() {
 
                         <TouchableOpacity style={styles.btnLogin}
                             onPress={() => {
-                                // handleSignin();
-                                navigation.navigate('HomeScreen');
+                                handleSignin();
+                                // navigation.navigate('HomeScreen');
                             }}>
                             <Text style={styles.txtBtnLogin}>Login</Text>
                         </TouchableOpacity>
