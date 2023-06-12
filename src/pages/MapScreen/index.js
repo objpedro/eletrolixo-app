@@ -18,6 +18,7 @@ export function MapScreen() {
     const [origin, setOrigin] = useState(null);
     const [destination, setDestination] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [iconVisible, setIconVisible] = useState(true);
 
     useEffect(() => {
         (async () => {
@@ -36,13 +37,6 @@ export function MapScreen() {
             })
         })();
     }, []);
-
-    let text = 'Waiting..';
-    if (errorMsg) {
-        text = errorMsg;
-    } else if (location) {
-        text = JSON.stringify(location);
-    }
 
     return (
         <>
@@ -80,25 +74,30 @@ export function MapScreen() {
                     <GooglePlacesAutocomplete
                         placeholder='Encontre Ecopoints'
                         onPress={(data, details = null) => {
+                            // console.log("Detalhes: ", details);
                             setDestination({
                                 latitude: details.geometry.location.lat,
                                 longitude: details.geometry.location.lng,
                                 latitudeDelta: 0.0922,
                                 longitudeDelta: 0.0421,
                             });
+                            setIconVisible(false)
                         }}
                         query={googlePlacesAutocompleteConfig}
                         enablePoweredByContainer={false}
                         fetchDetails={true}
                         styles={styles.autoComplete}
                     />
-                    <View style={styles.autoCompleteIconContainer}>
-                        <Search
-                            style={styles.autoCompleteIcon}
-                            width={20}
-                            height={20}
-                            color={colors.primario} />
-                    </View>
+                    {
+                        iconVisible &&
+                        <View style={styles.autoCompleteIconContainer}>
+                            <Search
+                                style={styles.autoCompleteIcon}
+                                width={20}
+                                height={20}
+                                color={colors.primario} />
+                        </View>
+                    }
                 </View>
             </View>
         </>

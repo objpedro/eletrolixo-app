@@ -75,11 +75,11 @@ export function ProfileScreen() {
                 <View style={styles.container} >
                     <Text style={{
                         fontSize: RFValue(20),
-                    }}>Nome: {user.displayName}</Text>
+                    }}>{user.displayName}</Text>
                     <Text style={{
                         fontSize: RFValue(20),
                         marginTop: 10
-                    }}>Email: {user.email}</Text>
+                    }}>{user.email}</Text>
                     {user.emailVerified == false &&
                         < Text style={{
                             color: colors.error
